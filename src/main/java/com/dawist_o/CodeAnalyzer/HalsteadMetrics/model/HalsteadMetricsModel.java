@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import lombok.Data;
 
+
 @Data
 public class HalsteadMetricsModel {
     private IntegerProperty j;
