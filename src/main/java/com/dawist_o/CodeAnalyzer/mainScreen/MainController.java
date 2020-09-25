@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import static com.dawist_o.CodeAnalyzer.mainScreen.CodeAnalyzer.openHalsteadMetrics;
 
 public class MainController {
 
@@ -29,7 +30,7 @@ public class MainController {
     void onFstButtonClicked(ActionEvent event) {
         String filePath=field.getText();
         if(isValidFilePath(filePath)){
-            FileParser fileParser=new FileParser(new File(filePath));
+            openHalsteadMetrics();
         } else{
             showInvalidFileWindow();
         }
