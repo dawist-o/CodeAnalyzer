@@ -5,7 +5,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.dawist_o.CodeAnalyzer.FileParser.FileParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,7 +39,7 @@ public class MainController {
     void onBrowseButtonClicked(){
         FileChooser fileChooser=new FileChooser();
         fileChooser.getExtensionFilters().add( new FileChooser.ExtensionFilter("JavaScript File","*js"));
-        field.setText(fileChooser.showOpenDialog(CodeAnalyzer.stage).getPath());
+        field.setText(fileChooser.showOpenDialog(CodeAnalyzer.window).getPath());
     }
 
     private static void showInvalidFileWindow(){
