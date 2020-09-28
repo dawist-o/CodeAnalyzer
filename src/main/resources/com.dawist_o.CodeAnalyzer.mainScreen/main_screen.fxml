@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.mainScreen.MainController">
    <top>
-      <MenuBar prefHeight="0.0" prefWidth="478.0" BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="0.0" prefWidth="478.0" style="-fx-background-color: #00b4d8;" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -32,16 +32,16 @@
       </MenuBar>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f1faee;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="114.0" layoutY="112.0" mnemonicParsing="false" onAction="#onFstButtonClicked" prefHeight="25.0" prefWidth="125.0" text="fst" />
-            <Button layoutX="114.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="scnd" />
-            <Button layoutX="114.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="thrd" />
-            <TextField fx:id="field" text="C:\Users\Asus\Desktop\snake.js" alignment="TOP_LEFT" layoutX="14.0" layoutY="68.0" prefHeight="25.0" prefWidth="237.0" promptText="file path">
+            <Button layoutX="69.0" layoutY="148.0" mnemonicParsing="false" onAction="#onFstButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Halstead's mertics" />
+            <Button layoutX="69.0" layoutY="207.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Jilb's mertics" />
+            <Button layoutX="69.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Chepin's metrics" />
+            <TextField fx:id="field" alignment="TOP_LEFT" layoutX="39.0" layoutY="73.0" prefHeight="30.0" prefWidth="260.0" promptText="file path" text="C:\Users\Asus\Desktop\snake.js">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextField>
-            <Button layoutX="259.0" layoutY="66.0" mnemonicParsing="false" onAction="#onBrowseButtonClicked" prefHeight="29.0" prefWidth="64.0" text="browse" />
+            <Button layoutX="139.0" layoutY="110.0" mnemonicParsing="false" onAction="#onBrowseButtonClicked" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #ffd166;" text="browse" />
          </children>
       </AnchorPane>
    </center>
