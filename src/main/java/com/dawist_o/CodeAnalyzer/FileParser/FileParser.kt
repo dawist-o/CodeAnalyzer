@@ -2,15 +2,20 @@ package com.dawist_o.CodeAnalyzer.FileParser
 
 import java.io.File
 
+fun main() {
+    val fileParser = FileParser(File(""))
+    val result = fileParser.parseFile()
+}
+
 
 class FileParser(private val file: File) {
 
-    private val operators = HashMap<String, Int>()
+    private val operators = basicOperators.associate { Pair(it, 0) }.toMutableMap()
     private val operands = HashMap<String, Int>()
 
     //TODO найди максимальный уровень вложенности условного оператора (CLI)
 
-    fun parseFile() {
+    fun parseFile(): ParseResult {
         val lines = readLinesFromFile()
         addAllFunctions(lines)
         for (line in lines) {
@@ -18,22 +23,44 @@ class FileParser(private val file: File) {
                 continue
             }
 
-            allOperators.filter { line.contains(it) }.forEach { parseOperator(it) }
-        }
+            if (!line.contains("function ")) {
+                operators.keys.filter { line.contains(it) }.forEach { parseOperator(it) }
+            }
+
+            if (line.contains("var") || line.contains("let")) {
+                addOperand(line)
+            }
+
+                val validOperands = operands
+                        .keys
+                        .filter { line.contains(it) }
+
+                validOperands.forEach {
+                    operands[it] = operands[it]!! + 1
+                }
+            }
+
+        return ParseResult(operators, operands)
     }
 
     private fun parseOperator(operator: String) {
-        if (operators["operator"] == null) {
-            operators["operator"] = 0
+        if (operators[operator] == null) {
+            operators[operator] = 0
         }
-        operators["operator"]!!.inc()
+        operators[operator] = operators[operator]!! + 1
     }
 
-    private fun parseIfStatement() {
-        if (operators["if"] == null) {
-            operators["if"] = 0
+    private fun addOperand(line: String) {
+        val spaceIndex = if (line.contains("var")) {
+            line.indexOf(' ', line.indexOf("var"))
+        } else {
+            line.indexOf(' ', line.indexOf("var"))
         }
-        operators["if"]!!.inc()
+
+        val operand = line.substring(spaceIndex + 1).takeWhile { it.isLetter() }
+        if(!operands.contains(operand)) {
+            operands[operand] = -1
+        }
     }
 
     private fun addAllFunctions(lines: List<String>) {
@@ -41,7 +68,7 @@ class FileParser(private val file: File) {
             if (it.contains("function ") && it.contains("(") && it.contains(")")) {
                 val braceIndex = it.indexOf("(")
                 val spaceIndex = it.lastIndexOf(" ", braceIndex)
-                val functionName = it.substring(spaceIndex..braceIndex)
+                val functionName = it.substring((spaceIndex + 1) until braceIndex)
                 operators[functionName] = 0
             }
         }
@@ -52,10 +79,10 @@ class FileParser(private val file: File) {
     }
 
     companion object {
-        val allOperators = listOf("for", "while", "if", "=", "==", "===", "<", ">", "<=", ">=", "!=", "!==", "+", "-", "*", "/", "&&", "||", "&", "|", "^", "~")
+        val basicOperators = listOf("for", "while", "if", "=", "==", "===", "<", ">", "<=", ">=", "!=", "!==", "+", "-", "*", "/", "&&", "||", "&", "|", "^", "~")
     }
 
-    class ParseResult(val operators: HashMap<String, Int>, val operands: HashMap<String, Int>) {
+    class ParseResult(val operators: MutableMap<String, Int>, val operands: MutableMap<String, Int>) {
         val totalUniqueOperators: Int
             get() = operators.size
         val totalUniqueOperands: Int
@@ -166,22 +193,22 @@ function fillMines(position) {
 //Привязка слушателей jQuery
 function bindListeners() {
 	${'$'}('.column').on("mousedown",function(e) {
-	var id = this.id;
-	var intId = parseInt(id.substring(4, 10));
+	    var id = this.id;
+	    var intId = parseInt(id.substring(4, 10));
 
-	if(isFirstClick) {
-		isFirstClick = false;
-		fillMines(intId);
-	}
-	if (e.button === 0) {
-		handleCellClick.call(this, intId, true);
-		return false;
-	}
-    if (e.button === 2) {
-      handleCellClick.call(this, intId, false);
-      return false;
-    }
-    return true;
+	    if(isFirstClick) {
+    		isFirstClick = false;
+    		fillMines(intId);
+    	}
+    	if (e.button === 0) {
+    		handleCellClick.call(this, intId, true);
+    		return false;
+    	}
+        if (e.button === 2) {
+          handleCellClick.call(this, intId, false);
+          return false;
+        }
+        return true;
  	});
 
  	${'$'}('#startButton').click(function() {
