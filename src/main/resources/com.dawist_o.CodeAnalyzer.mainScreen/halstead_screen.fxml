@@ -10,51 +10,55 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController">
-   <center>
-      <AnchorPane prefHeight="425.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <TableView fx:id="operandsTable" layoutX="311.0" layoutY="81.0" prefHeight="200.0" prefWidth="225.0">
-              <columns>
-                  <TableColumn fx:id="iColumn" prefWidth="75.0" text="i" />
-                  <TableColumn fx:id="operandsColumn" prefWidth="75.0" text="Operand" />
-                  <TableColumn fx:id="i_countColumn" prefWidth="75.0" text="F2i" />
-              </columns>
-            </TableView>
-            <TextField editable="false" layoutX="226.0" layoutY="20.0" text="Halstead metrics" />
-            <TextField fx:id="lib_field" editable="false" layoutX="225.0" layoutY="320.0" text="n=j_count+i_count" />
-            <TextField fx:id="length_field" editable="false" layoutX="226.0" layoutY="352.0" text="N=f1j_sum+f2i_sum" />
-            <TextField fx:id="v_field" editable="false" layoutX="226.0" layoutY="385.0" text="V=N*log2(n)" />
-            <TableView fx:id="operatorsTable" layoutX="65.0" layoutY="81.0" prefHeight="200.0" prefWidth="225.0">
-               <columns>
-                <TableColumn fx:id="jColumn" prefWidth="75.0" text="j" />
-                <TableColumn fx:id="operatorsColumn" prefWidth="75.0" text="Operator" />
-                  <TableColumn fx:id="j_countColumn" prefWidth="75.0" text="F1j" />
-               </columns>
-            </TableView>
-            <Button layoutX="465.0" layoutY="340.0" mnemonicParsing="false" onAction="#test" text="Button" />
-         </children>
-      </AnchorPane>
-   </center>
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController">
+    <center>
+        <AnchorPane prefHeight="425.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <TableView fx:id="operandsTable" layoutX="311.0" layoutY="81.0" prefHeight="200.0" prefWidth="225.0">
+                    <columns>
+                        <TableColumn fx:id="iColumn" prefWidth="75.0" text="i"/>
+                        <TableColumn fx:id="operandsColumn" prefWidth="75.0" text="Operand"/>
+                        <TableColumn fx:id="i_countColumn" prefWidth="75.0" text="F2i"/>
+                    </columns>
+                </TableView>
+                <TextField editable="false" layoutX="226.0" layoutY="20.0" text="Halstead metrics"/>
+                <TextField fx:id="lib_field" editable="false" layoutX="225.0" layoutY="320.0" text="n=j_count+i_count"/>
+                <TextField fx:id="length_field" editable="false" layoutX="226.0" layoutY="352.0"
+                           text="N=f1j_sum+f2i_sum"/>
+                <TextField fx:id="v_field" editable="false" layoutX="226.0" layoutY="385.0" text="V=N*log2(n)"/>
+                <TableView fx:id="operatorsTable" layoutX="65.0" layoutY="81.0" prefHeight="200.0" prefWidth="225.0">
+                    <columns>
+                        <TableColumn fx:id="jColumn" prefWidth="75.0" text="j"/>
+                        <TableColumn fx:id="operatorsColumn" prefWidth="75.0" text="Operator"/>
+                        <TableColumn fx:id="j_countColumn" prefWidth="75.0" text="F1j"/>
+                    </columns>
+                </TableView>
+                <Button layoutX="465.0" layoutY="340.0" mnemonicParsing="false" onAction="#test" text="Button"/>
+            </children>
+        </AnchorPane>
+    </center>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Back">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onBackButtonPressed" text="Back"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About authors"/>
+                        <MenuItem mnemonicParsing="false" text="About Halstead metrics"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
 </BorderPane>

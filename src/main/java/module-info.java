@@ -9,8 +9,18 @@ module FXModule {
     requires transitive org.mapstruct.processor;  //без него lombok выпендривается
     requires kotlin.stdlib;
 
-    exports com.dawist_o.CodeAnalyzer.mainScreen;
-    opens com.dawist_o.CodeAnalyzer.mainScreen;
+    exports com.dawist_o.CodeAnalyzer.StagesController;
+    opens com.dawist_o.CodeAnalyzer.StagesController;
+
+    exports com.dawist_o.CodeAnalyzer;
+    opens com.dawist_o.CodeAnalyzer;
+
+    exports com.dawist_o.CodeAnalyzer.MainScreen.controller;
+    opens com.dawist_o.CodeAnalyzer.MainScreen.controller;
+
     exports com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller;
     opens com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller;
+
+    exports com.dawist_o.CodeAnalyzer.JilbMetrics.controller;
+    opens com.dawist_o.CodeAnalyzer.JilbMetrics.controller;
 }

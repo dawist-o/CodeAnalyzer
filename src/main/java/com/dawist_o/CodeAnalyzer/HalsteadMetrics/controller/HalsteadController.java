@@ -1,9 +1,7 @@
 package com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.HalsteadMetricsModel;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.OperandTableModel;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.OperatorTableModel;
@@ -15,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainScene;
 
 public class HalsteadController {
     @FXML
@@ -50,32 +50,35 @@ public class HalsteadController {
 
     @FXML
     void initialize() {
-        //  lib_field.setText(Integer.toString(halsteadMetricsModel.getProgram_dictionary()));
-        //  length_field.setText(Integer.toString(halsteadMetricsModel.getProgram_length()));
-        //  v_field.setText(Integer.toString(halsteadMetricsModel.getProgram_V()));
-        jColumn.setCellValueFactory(p->p.getValue().getJ().asObject());
+//        lib_field.setText(Integer.toString(model.getProgram_dictionary()));
+        //      length_field.setText(Integer.toString(model.getProgram_length()));
+        //    v_field.setText(Integer.toString(model.getProgram_V()));
+        jColumn.setCellValueFactory(p -> p.getValue().getJ().asObject());
         operatorsColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getOperator().getKey()));
         j_countColumn.setCellValueFactory(p ->
                 new SimpleIntegerProperty(p.getValue().getOperator().getValue()).asObject());
-        iColumn.setCellValueFactory(p->p.getValue().getI().asObject());
+        iColumn.setCellValueFactory(p -> p.getValue().getI().asObject());
         operandsColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getOperand().getKey()));
         i_countColumn.setCellValueFactory(p ->
                 new SimpleIntegerProperty(p.getValue().getOperand().getValue()).asObject());
     }
-
+    @FXML
+    public void onBackButtonPressed(){
+        setMainScene();
+    }
     @FXML
     void test() {
         HashMap<String, Integer> fst = new HashMap<>();
-        fst.put("123", 2);
-        fst.put("456", 7);
+        fst.put(">", 2);
+        fst.put("==", 7);
 
         HashMap<String, Integer> scnd = new HashMap<>();
-        scnd.put("123", 2);
-        scnd.put("456", 7);
+        scnd.put("&", 6);
+        scnd.put("||", 3);
         ObservableList<OperatorTableModel> list = FXCollections.observableArrayList();
-        int i=1;
-        for (Map.Entry<String, Integer> q:fst.entrySet()){
-            list.add(new OperatorTableModel(q,i));
+        int i = 1;
+        for (Map.Entry<String, Integer> q : fst.entrySet()) {
+            list.add(new OperatorTableModel(q, i));
             i++;
         }
         operatorsTable.getItems().addAll(list);

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.JilbMetrics.controller.JilbController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Back">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onBackButtonPressed" text="Back" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About authors" />
+                  <MenuItem mnemonicParsing="false" text="About Jilb's metrics" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="355.0" BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="64.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jilb's metrics" textAlignment="CENTER" wrappingWidth="227.34645080566406">
+                    <font>
+                        <Font size="40.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="big_cl_field" layoutX="75.0" layoutY="92.0" prefHeight="28.0" prefWidth="205.0" />
+                <TextField fx:id="cl_field" layoutX="75.0" layoutY="140.0" prefHeight="28.0" prefWidth="205.0" />
+                <TextField fx:id="cli_field" layoutX="74.0" layoutY="193.0" prefHeight="28.0" prefWidth="205.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
