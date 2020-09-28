@@ -8,6 +8,8 @@ class FileParser(private val file: File) {
     private val operators = HashMap<String, Int>()
     private val operands = HashMap<String, Int>()
 
+    //TODO найди максимальный уровень вложенности условного оператора (CLI)
+
     fun parseFile() {
         val lines = readLinesFromFile()
         addAllFunctions(lines)
