@@ -9,7 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
+import javafx.stage.FileChooser;A
 import static com.dawist_o.CodeAnalyzer.mainScreen.CodeAnalyzer.openHalsteadMetrics;
 
 public class MainController {
@@ -23,35 +23,41 @@ public class MainController {
     @FXML
     private URL location;
 
-    private static final String NO_SUCH_FILE_PATH_MSG="File with path: %s  does't exist or isn't .js file";
+    private static final String NO_SUCH_FILE_PATH_MSG = "File with path: %s  does't exist or isn't .js file";
 
     @FXML
     void onFstButtonClicked(ActionEvent event) {
-        String filePath=field.getText();
-        if(isValidFilePath(filePath)){
+        String filePath = field.getText();
+        if (isValidFilePath(filePath)) {
             openHalsteadMetrics();
-        } else{
+        } else {
             showInvalidFileWindow();
         }
     }
 
     @FXML
-    void onBrowseButtonClicked(){
-        FileChooser fileChooser=new FileChooser();
-        fileChooser.getExtensionFilters().add( new FileChooser.ExtensionFilter("JavaScript File","*js"));
-        field.setText(fileChooser.showOpenDialog(CodeAnalyzer.window).getPath());
+    void onBrowseButtonClicked() {
+        File fileForRead = chooseFile();
+        if (fileForRead != null)
+            field.setText(fileForRead.getPath());
     }
 
-    private static void showInvalidFileWindow(){
+    private static File chooseFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JavaScript File", "*js"));
+        return fileChooser.showOpenDialog(CodeAnalyzer.window);
+    }
+
+    private static void showInvalidFileWindow() {
         Alert programInfo = new Alert(Alert.AlertType.INFORMATION);
         programInfo.setTitle("Error");
         programInfo.setContentText(NO_SUCH_FILE_PATH_MSG);
         programInfo.showAndWait();
     }
 
-    private boolean isValidFilePath(String filePath){
-        File file=new File(filePath);
-        if(file.exists() && filePath.endsWith(".js"))
+    private boolean isValidFilePath(String filePath) {
+        File file = new File(filePath);
+        if (file.exists() && filePath.endsWith(".js"))
             return true;
         return false;
     }
