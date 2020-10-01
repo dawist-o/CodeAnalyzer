@@ -23,4 +23,7 @@ module FXModule {
 
     exports com.dawist_o.CodeAnalyzer.JilbMetrics.controller;
     opens com.dawist_o.CodeAnalyzer.JilbMetrics.controller;
+
+    exports com.dawist_o.CodeAnalyzer.SpenAndChepinsMetrics.controller;
+    opens com.dawist_o.CodeAnalyzer.SpenAndChepinsMetrics.controller;
 }
