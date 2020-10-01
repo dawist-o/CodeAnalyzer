@@ -35,7 +35,6 @@
                         <TableColumn fx:id="j_countColumn" prefWidth="75.0" text="F1j"/>
                     </columns>
                 </TableView>
-                <Button layoutX="465.0" layoutY="340.0" mnemonicParsing="false" onAction="#test" text="Button"/>
             </children>
         </AnchorPane>
     </center>

@@ -2,7 +2,8 @@ package com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.HalsteadMetricsModel;
+
+import com.dawist_o.CodeAnalyzer.FileParser.FileParser;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.OperandTableModel;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.models.OperatorTableModel;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -42,45 +43,48 @@ public class HalsteadController {
     @FXML
     private TableView<OperandTableModel> operandsTable;
 
-    private HalsteadMetricsModel model;
-
-    public void setModel(HalsteadMetricsModel model) {
-        this.model = model;
-    }
-
     @FXML
     void initialize() {
-//        lib_field.setText(Integer.toString(model.getProgram_dictionary()));
-        //      length_field.setText(Integer.toString(model.getProgram_length()));
-        //    v_field.setText(Integer.toString(model.getProgram_V()));
-        jColumn.setCellValueFactory(p -> p.getValue().getJ().asObject());
-        operatorsColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getOperator().getKey()));
-        j_countColumn.setCellValueFactory(p ->
-                new SimpleIntegerProperty(p.getValue().getOperator().getValue()).asObject());
-        iColumn.setCellValueFactory(p -> p.getValue().getI().asObject());
-        operandsColumn.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getOperand().getKey()));
-        i_countColumn.setCellValueFactory(p ->
-                new SimpleIntegerProperty(p.getValue().getOperand().getValue()).asObject());
+        jColumn.setCellValueFactory(data -> data.getValue().getJ().asObject());
+        operatorsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOperator().getKey()));
+        j_countColumn.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getOperator().getValue()).asObject());
+
+        iColumn.setCellValueFactory(data -> data.getValue().getI().asObject());
+        operandsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOperand().getKey()));
+        i_countColumn.setCellValueFactory(data ->
+                new SimpleIntegerProperty(data.getValue().getOperand().getValue()).asObject());
     }
+
     @FXML
-    public void onBackButtonPressed(){
+    public void onBackButtonPressed() {
         setMainScene();
     }
-    @FXML
-    void test() {
-        HashMap<String, Integer> fst = new HashMap<>();
-        fst.put(">", 2);
-        fst.put("==", 7);
 
-        HashMap<String, Integer> scnd = new HashMap<>();
-        scnd.put("&", 6);
-        scnd.put("||", 3);
-        ObservableList<OperatorTableModel> list = FXCollections.observableArrayList();
+    public void initData(FileParser.ParseResult result) {
+        fillOperatorsTable(result.getOperators());
+        fillOperandsTable(result.getOperands());
+        lib_field.setText(Integer.toString(result.getProgrammDictionnary()));
+        length_field.setText(Integer.toString(result.getProgrammLength()));
+        v_field.setText(Integer.toString(result.getVolume()));
+    }
+
+    private void fillOperatorsTable(Map<String, Integer> map) {
+        ObservableList<OperatorTableModel> operatorsList = FXCollections.observableArrayList();
         int i = 1;
-        for (Map.Entry<String, Integer> q : fst.entrySet()) {
-            list.add(new OperatorTableModel(q, i));
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            operatorsList.add(new OperatorTableModel(entry, i));
             i++;
         }
-        operatorsTable.getItems().addAll(list);
+        operatorsTable.getItems().addAll(operatorsList);
+    }
+
+    private void fillOperandsTable(Map<String, Integer> map) {
+        ObservableList<OperandTableModel> operandsList = FXCollections.observableArrayList();
+        int i = 1;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            operandsList.add(new OperandTableModel(entry, i));
+            i++;
+        }
+        operandsTable.getItems().addAll(operandsList);
     }
 }

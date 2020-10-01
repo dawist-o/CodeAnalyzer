@@ -7,8 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-import static com.dawist_o.CodeAnalyzer.StagesController.StageController.openHalsteadMetrics;
-import static com.dawist_o.CodeAnalyzer.StagesController.StageController.openJilbMetrics;
+import static com.dawist_o.CodeAnalyzer.StagesController.StageController.*;
 
 public class MainController {
 
@@ -21,7 +20,7 @@ public class MainController {
     void onFirstButtonClicked() {
         String filePath = filePathField.getText();
         if (isValidFilePath(filePath)) {
-            openHalsteadMetrics();
+            openHalsteadMetrics(new File(filePath));
         } else {
             showInvalidFileWindow();
         }
@@ -32,6 +31,15 @@ public class MainController {
         String filePath = filePathField.getText();
         if (isValidFilePath(filePath)) {
             openJilbMetrics();
+        } else {
+            showInvalidFileWindow();
+        }
+    }
+    @FXML
+    void onThrdButtonClicked() {
+        String filePath = filePathField.getText();
+        if (isValidFilePath(filePath)) {
+            openSpenAndChepinMetrics();
         } else {
             showInvalidFileWindow();
         }
