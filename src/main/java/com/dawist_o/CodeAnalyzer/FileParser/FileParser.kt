@@ -31,16 +31,30 @@ class FileParser(private val file: File) {
                 addOperand(line)
             }
 
-                val validOperands = operands
-                        .keys
-                        .filter { line.contains(it) }
+            val validOperands = operands
+                    .keys
+                    .filter {
+                        if (line.contains(it)) {
+                            val previousCharIndex = line.indexOf(it) - 1
+                            val nextCharIndex = line.indexOf(it) + it.length
+                            if(previousCharIndex in 0 until line.length && nextCharIndex in 0 until line.length) {
+                                val nextChar = line[nextCharIndex]
+                                val previousChar = line[nextCharIndex]
+                                !previousChar.isLetter() && !nextChar.isLetter()
+                            } else {
+                                false
+                            }
+                        } else {
+                            false
+                        }
+                    }
 
-                validOperands.forEach {
-                    operands[it] = operands[it]!! + 1
-                }
+            validOperands.forEach {
+                operands[it] = operands[it]!! + 1
             }
+        }
 
-        operators = operators.filter { it.value > 0  }.toMutableMap() // remove all operators that are not presented in code.
+        operators = operators.filter { it.value > 0 }.toMutableMap() //remove all operators that are not presented in code.
         return ParseResult(operators, operands)
     }
 
@@ -59,7 +73,7 @@ class FileParser(private val file: File) {
         }
 
         val operand = line.substring(spaceIndex + 1).takeWhile { it.isLetter() }
-        if(!operands.contains(operand)) {
+        if (!operands.contains(operand)) {
             operands[operand] = -1
         }
     }
@@ -105,7 +119,6 @@ class FileParser(private val file: File) {
             get() = (programmLength * Math.log(programmDictionnary.toDouble()) / Math.log(2.0)).toInt()
     }
 }
-
 
 val text = """var field;
 var fieldSize;
