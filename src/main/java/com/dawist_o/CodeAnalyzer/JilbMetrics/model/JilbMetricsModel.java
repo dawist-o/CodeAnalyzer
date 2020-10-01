@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @AllArgsConstructor
-public class JilbModel {
+public class JilbMetricsModel {
     // (n) switch-case branches == (n-1) if-else
     // CL==if_count or switch-case_count-1 - количество условных операторов
     // cl==CL/operators. кол-во условных операторов / но общее количетсво операторов

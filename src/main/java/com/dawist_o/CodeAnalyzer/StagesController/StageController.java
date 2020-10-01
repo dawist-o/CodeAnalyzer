@@ -1,8 +1,8 @@
 package com.dawist_o.CodeAnalyzer.StagesController;
 
-import com.dawist_o.CodeAnalyzer.CodeAnalyzer;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController;
 import com.dawist_o.CodeAnalyzer.JilbMetrics.controller.JilbController;
+import com.dawist_o.CodeAnalyzer.JilbMetrics.model.JilbMetricsModel;
 import com.dawist_o.CodeAnalyzer.MainScreen.controller.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,6 +29,7 @@ public class StageController {
     public static void openHalsteadMetrics() {
         Scene scene = new Scene(
                 getParent(HalsteadController.class,"/com.dawist_o.CodeAnalyzer.mainScreen/halstead_screen.fxml"));
+
         window.setTitle("Halstead metrics");
         window.setScene(scene);
         window.show();
@@ -42,9 +43,10 @@ public class StageController {
         window.show();
     }
 
-    private static Parent getParent(Class controllerClass, String path) {
+    private static Parent getParent(Class<?> controllerClass, String path) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(controllerClass.getResource(path));
+        JilbMetricsModel model=loader.getController();
         Parent root = null;
         try {
             root = loader.load();

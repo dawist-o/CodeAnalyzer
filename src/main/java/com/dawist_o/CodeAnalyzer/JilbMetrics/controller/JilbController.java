@@ -2,7 +2,7 @@ package com.dawist_o.CodeAnalyzer.JilbMetrics.controller;
 
 import java.util.HashMap;
 
-import com.dawist_o.CodeAnalyzer.JilbMetrics.model.JilbModel;
+import com.dawist_o.CodeAnalyzer.JilbMetrics.model.JilbMetricsModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -23,7 +23,7 @@ public class JilbController {
         fst.put("if", 2);
         fst.put("case", 7);
         fst.put("==", 10);
-        JilbModel jilbModel = new JilbModel(fst, 5);
+        JilbMetricsModel jilbModel = new JilbMetricsModel(fst, 5);
         big_cl_field.setText("CL = " + jilbModel.get_CL());
         cl_field.setText("cl = " + jilbModel.get_cl());
         cli_field.setText("SLI = " + jilbModel.getMax_nesting_level());

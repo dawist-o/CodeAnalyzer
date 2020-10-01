@@ -9,51 +9,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="340.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.dawist_o.CodeAnalyzer.MainScreen.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.MainScreen.controller.MainController">
     <top>
-        <MenuBar prefHeight="0.0" prefWidth="478.0" style="-fx-background-color: #00b4d8;"
-                 BorderPane.alignment="CENTER">
+        <MenuBar prefHeight="0.0" prefWidth="478.0" style="-fx-background-color: #00b4d8;" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close"/>
+                        <MenuItem mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About"/>
+                        <MenuItem mnemonicParsing="false" text="About authors" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
     </top>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f1faee;"
-                    BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f1faee;" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="69.0" layoutY="148.0" mnemonicParsing="false" onAction="#onFirstButtonClicked"
-                        prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;"
-                        text="Halstead's mertics"/>
-                <Button layoutX="69.0" layoutY="207.0" mnemonicParsing="false" onAction="#onSecondButtonClicked"
-                        prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;"
-                        text="Jilb's mertics"/>
-                <Button layoutX="69.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0"
-                        style="-fx-background-color: #a8dadc;" text="Chepin's metrics"/>
-                <TextField fx:id="filePathField" alignment="TOP_LEFT" layoutX="39.0" layoutY="73.0" prefHeight="30.0"
-                           prefWidth="260.0" promptText="file path" text="C:\Users\Asus\Desktop\snake.js">
+                <Button layoutX="69.0" layoutY="148.0" mnemonicParsing="false" onAction="#onFirstButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Halstead's mertics" />
+                <Button layoutX="69.0" layoutY="207.0" mnemonicParsing="false" onAction="#onSecondButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Jilb's mertics" />
+                <Button layoutX="69.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Chepin's metrics" />
+                <TextField fx:id="filePathField" alignment="TOP_LEFT" layoutX="39.0" layoutY="73.0" prefHeight="30.0" prefWidth="260.0" promptText="file path" text="C:\Users\Asus\Desktop\snake.js">
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </TextField>
-                <Button layoutX="139.0" layoutY="110.0" mnemonicParsing="false" onAction="#onBrowseButtonClicked"
-                        prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #ffd166;" text="browse"/>
+                <Button layoutX="139.0" layoutY="110.0" mnemonicParsing="false" onAction="#onBrowseButtonClicked" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #ffd166;" text="browse" />
             </children>
         </AnchorPane>
     </center>
