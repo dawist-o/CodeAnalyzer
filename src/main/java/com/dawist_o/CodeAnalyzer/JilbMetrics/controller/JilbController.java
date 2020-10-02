@@ -6,7 +6,7 @@ import com.dawist_o.CodeAnalyzer.JilbMetrics.model.JilbMetricsModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainScene;
+import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainStage;
 
 public class JilbController {
 
@@ -31,6 +31,6 @@ public class JilbController {
 
     @FXML
     public void onBackButtonPressed() {
-        setMainScene();
+        setMainStage();
     }
 }

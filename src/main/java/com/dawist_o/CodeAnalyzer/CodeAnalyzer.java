@@ -4,7 +4,7 @@ import com.dawist_o.CodeAnalyzer.StagesController.StageController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainScene;
+import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainStage;
 
 public class CodeAnalyzer extends Application {
 
@@ -15,6 +15,6 @@ public class CodeAnalyzer extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         StageController.window = primaryStage;
-        setMainScene();
+        setMainStage();
     }
 }

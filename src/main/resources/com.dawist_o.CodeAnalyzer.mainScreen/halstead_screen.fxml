@@ -39,9 +39,9 @@
             <children>
                 <TableView fx:id="operandsTable" layoutX="14.0" layoutY="24.0" prefHeight="241.0" prefWidth="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="iColumn" minWidth="50.0" text="i" />
+                        <TableColumn fx:id="iColumn"  minWidth="80.0" text="i" />
                         <TableColumn fx:id="operandsColumn" minWidth="100.0" prefWidth="170.0" text="Operand" />
-                        <TableColumn fx:id="i_countColumn" minWidth="40.0" text="F2i" />
+                        <TableColumn fx:id="i_countColumn" minWidth="80.0" text="F2i" />
                     </columns>
                 </TableView>
                 <TextField fx:id="lib_field" editable="false" layoutX="343.0" layoutY="88.0" text="n=j_count+i_count" />
@@ -49,9 +49,9 @@
                 <TextField fx:id="v_field" editable="false" layoutX="344.0" layoutY="166.0" text="V=N*log2(n)" />
                 <TableView fx:id="operatorsTable" layoutX="14.0" layoutY="253.0" prefHeight="196.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="jColumn" minWidth="30.0" text="j" />
-                        <TableColumn fx:id="operatorsColumn" minWidth="40.0" prefWidth="170.0" text="Operator" />
-                        <TableColumn fx:id="j_countColumn" minWidth="60.0" text="F1j" />
+                        <TableColumn fx:id="jColumn" minWidth="80"  text="j" />
+                        <TableColumn fx:id="operatorsColumn" prefWidth="170.0" minWidth="100.0" text="Operator" />
+                        <TableColumn fx:id="j_countColumn" minWidth="80" text="F1j" />
                     </columns>
                 </TableView>
             <Text layoutX="343.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Halstead metrics" wrappingWidth="194.38150024414062">

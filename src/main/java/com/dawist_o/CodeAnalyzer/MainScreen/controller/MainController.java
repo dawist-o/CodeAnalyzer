@@ -30,7 +30,7 @@ public class MainController {
     void onSecondButtonClicked() {
         String filePath = filePathField.getText();
         if (isValidFilePath(filePath)) {
-            openJilbMetrics();
+            openJilbMetrics(new File(filePath));
         } else {
             showInvalidFileWindow();
         }
@@ -39,7 +39,7 @@ public class MainController {
     void onThrdButtonClicked() {
         String filePath = filePathField.getText();
         if (isValidFilePath(filePath)) {
-            openSpenAndChepinMetrics();
+            openSpenAndChepinMetrics(new File(filePath));
         } else {
             showInvalidFileWindow();
         }

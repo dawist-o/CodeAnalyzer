@@ -1,6 +1,5 @@
 package com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.dawist_o.CodeAnalyzer.FileParser.FileParser;
@@ -15,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainScene;
+import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMainStage;
 
 public class HalsteadController {
     @FXML
@@ -57,7 +56,7 @@ public class HalsteadController {
 
     @FXML
     public void onBackButtonPressed() {
-        setMainScene();
+        setMainStage();
     }
 
     public void initData(FileParser.ParseResult result) {
