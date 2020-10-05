@@ -3,7 +3,6 @@ package com.dawist_o.CodeAnalyzer.StagesController;
 import com.dawist_o.CodeAnalyzer.FileParser.FileParser;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController;
 import com.dawist_o.CodeAnalyzer.JilbMetrics.controller.JilbController;
-import com.dawist_o.CodeAnalyzer.JilbMetrics.model.JilbMetricsModel;
 import com.dawist_o.CodeAnalyzer.MainScreen.controller.MainController;
 import com.dawist_o.CodeAnalyzer.SpenAndChepinsMetrics.controller.SpenAndChepinController;
 import javafx.fxml.FXMLLoader;
@@ -51,7 +50,7 @@ public class StageController {
     }
 
     public static void openJilbMetrics(File fileForParse) {
-        JilbMetricsModel model = setStage(JilbController.class,
+        JilbController model = setStage(JilbController.class,
                 "/com.dawist_o.CodeAnalyzer.mainScreen/jilb_screen.fxml",
                 "Jilb metrics").getController();
         FileParser fileParser = new FileParser(fileForParse);
@@ -60,7 +59,7 @@ public class StageController {
     }
 
     public static void openSpenAndChepinMetrics(File fileForParse) {
-        JilbMetricsModel model = setStage(SpenAndChepinController.class,
+        SpenAndChepinController model = setStage(SpenAndChepinController.class,
                 "/com.dawist_o.CodeAnalyzer.mainScreen/spen&chepin_screen.fxml",
                 "Spen and Chepin metrics").getController();
         FileParser fileParser = new FileParser(fileForParse);
