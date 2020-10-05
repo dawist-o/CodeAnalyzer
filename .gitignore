@@ -1,6 +1,7 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+.iml
+.idea
 # Datasource local storage ignored files
 /../../../../../../:\Users\Asus\IdeaProjects\CodeAnalyzer\.idea/dataSources/
 /dataSources.local.xml
