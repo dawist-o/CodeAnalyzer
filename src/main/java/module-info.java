@@ -6,8 +6,11 @@ module FXModule {
 
     //TODO lombok(смотри HalsteadMetrics) установи плагин если не будет видеть и включи в Settings->Compiler->Annotation Processor та мгалочка
     requires static lombok;
-    requires transitive org.mapstruct.processor;  //без него lombok выпендривается
+    requires org.mapstruct.processor;  //без него lombok выпендривается
     requires kotlin.stdlib;
+
+    exports com.dawist_o.CodeAnalyzer.FileParser;
+    opens com.dawist_o.CodeAnalyzer.FileParser;
 
     exports com.dawist_o.CodeAnalyzer.StagesController;
     opens com.dawist_o.CodeAnalyzer.StagesController;
