@@ -1,6 +1,7 @@
 package com.dawist_o.CodeAnalyzer.FileParser
 
 import java.io.File
+import java.io.InputStream
 
 fun main() {
     val fileParser = FileParser(File(""))
@@ -96,7 +97,10 @@ class FileParser(private val file: File) {
     }
 
     private fun readLinesFromFile(): List<String> {
-        return text.lines()
+        val inputStream: InputStream = file.inputStream()
+        val inputString = inputStream.bufferedReader().use { it.readText() };
+        return inputString.lines();
+        //return text.lines()
     }
 
     private fun String.containsOperand(operand: String): Boolean {
@@ -138,18 +142,19 @@ class FileParser(private val file: File) {
         val totalOperands: Int
             get() = operands.values.sum()
 
-        val programmDictionnary: Int
+        val programDictionary: Int
             get() = totalUniqueOperators + totalUniqueOperands
 
-        val programmLength: Int
+        val programLength: Int
             get() = totalOperators + totalOperands
 
         val volume: Int
-            get() = (programmLength * Math.log(programmDictionnary.toDouble()) / Math.log(2.0)).toInt()
+            get() = (programLength * Math.log(programDictionary.toDouble()) / Math.log(2.0)).toInt()
     }
 }
 
-val text = """var field;
+val text = """
+var field;
 var fieldSize;
 var fieldDiv;
 var minesTotal;
