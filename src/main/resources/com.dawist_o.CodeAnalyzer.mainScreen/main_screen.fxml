@@ -37,7 +37,7 @@
                 <Button layoutX="69.0" layoutY="148.0" mnemonicParsing="false" onAction="#onFirstButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Halstead's mertics" />
                 <Button layoutX="69.0" layoutY="207.0" mnemonicParsing="false" onAction="#onSecondButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Jilb's mertics" />
                 <Button layoutX="69.0" layoutY="265.0" mnemonicParsing="false" onAction="#onThrdButtonClicked" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #a8dadc;" text="Chepin's metrics" />
-                <TextField fx:id="filePathField" alignment="TOP_LEFT" layoutX="39.0" layoutY="73.0" prefHeight="30.0" prefWidth="260.0" promptText="file path" text="C:\Users\Asus\Desktop\snake.js">
+                <TextField fx:id="filePathField" alignment="TOP_LEFT" layoutX="39.0" layoutY="73.0" prefHeight="30.0" prefWidth="260.0" promptText="file path" text="C:\Users\Asus\Desktop\miner.js">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

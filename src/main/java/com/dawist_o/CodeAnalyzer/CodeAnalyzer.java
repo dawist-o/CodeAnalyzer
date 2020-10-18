@@ -14,6 +14,7 @@ public class CodeAnalyzer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setResizable(false);
         StageController.window = primaryStage;
         setMainStage();
     }

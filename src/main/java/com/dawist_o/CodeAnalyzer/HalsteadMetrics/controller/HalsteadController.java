@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -18,11 +19,19 @@ import static com.dawist_o.CodeAnalyzer.StagesController.StageController.setMain
 
 public class HalsteadController {
     @FXML
-    private TextField lib_field;
+    private TextField dictionary_field;
     @FXML
     private TextField length_field;
     @FXML
-    private TextField v_field;
+    private TextField volume_field;
+    @FXML
+    private TextField totalUniqueOperators;
+    @FXML
+    private TextField totalOperators;
+    @FXML
+    private TextField totalOperands;
+    @FXML
+    private TextField totalUniqueOperands;
 
     @FXML
     private TableColumn<OperatorTableModel, Integer> jColumn;
@@ -62,9 +71,25 @@ public class HalsteadController {
     public void initData(FileParser.ParseResult result) {
         fillOperatorsTable(result.getOperators());
         fillOperandsTable(result.getOperands());
-        lib_field.setText(Integer.toString(result.getProgrammDictionnary()));
-        length_field.setText(Integer.toString(result.getProgrammLength()));
-        v_field.setText(Integer.toString(result.getVolume()));
+
+        totalUniqueOperands.setText(Integer.toString(result.getTotalUniqueOperands()));
+        totalOperands.setText(Integer.toString(result.getTotalOperands()));
+
+        totalUniqueOperators.setText(Integer.toString(result.getTotalUniqueOperators()));
+        totalOperators.setText(Integer.toString(result.getTotalOperators()));
+
+        //Program dictionary
+        String dictionary_string = String.format("n = %d + %d = %d",
+                result.getTotalUniqueOperands(), result.getTotalUniqueOperators(), result.getProgramDictionary());
+        dictionary_field.setText(dictionary_string);
+        //Program length
+        String length_string = String.format("N = %d + %d = %d",
+                result.getTotalOperands(), result.getTotalOperators(), result.getProgramLength());
+        length_field.setText(length_string);
+        //Program volume
+        String volume_string = String.format("V = %d*log2(%d) = %d",
+                result.getProgramLength(), result.getProgramDictionary(), result.getVolume());
+        volume_field.setText(volume_string);
     }
 
     private void fillOperatorsTable(Map<String, Integer> map) {
@@ -75,6 +100,15 @@ public class HalsteadController {
             i++;
         }
         operatorsTable.getItems().addAll(operatorsList);
+    }
+
+    @FXML
+    public void showAboutAuthorsMessage(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Authors");
+        alert.setHeaderText("Authors:");
+        alert.setContentText("Backend:Ivan Pletinskiy\nFrontend & controllers: Kovalenko Vladislav");
+        alert.showAndWait();
     }
 
     private void fillOperandsTable(Map<String, Integer> map) {

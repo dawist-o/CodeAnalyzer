@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -27,7 +27,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About authors" />
+                        <MenuItem mnemonicParsing="false" text="About authors" onAction="#showAboutAuthorsMessage" />
                         <MenuItem mnemonicParsing="false" text="About Halstead metrics" />
                     </items>
                 </Menu>
@@ -35,30 +35,85 @@
         </MenuBar>
     </top>
    <left>
-        <AnchorPane prefHeight="467.0" prefWidth="521.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="527.0" prefWidth="559.0" BorderPane.alignment="CENTER">
             <children>
-                <TableView fx:id="operandsTable" layoutX="14.0" layoutY="24.0" prefHeight="241.0" prefWidth="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <TableView fx:id="operandsTable" layoutX="14.0" layoutY="-1.0" prefHeight="230.0" prefWidth="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <columns>
-                        <TableColumn fx:id="iColumn"  minWidth="80.0" text="i" />
-                        <TableColumn fx:id="operandsColumn" minWidth="100.0" prefWidth="170.0" text="Operand" />
-                        <TableColumn fx:id="i_countColumn" minWidth="80.0" text="F2i" />
+                        <TableColumn fx:id="iColumn" minWidth="80.0" resizable="false" text="i" />
+                        <TableColumn fx:id="operandsColumn" minWidth="100.0" prefWidth="170.0" resizable="false" text="Operand" />
+                        <TableColumn fx:id="i_countColumn" minWidth="80.0" resizable="false" text="F2i" />
                     </columns>
                 </TableView>
-                <TextField fx:id="lib_field" editable="false" layoutX="343.0" layoutY="88.0" text="n=j_count+i_count" />
-                <TextField fx:id="length_field" editable="false" layoutX="344.0" layoutY="130.0" text="N=f1j_sum+f2i_sum" />
-                <TextField fx:id="v_field" editable="false" layoutX="344.0" layoutY="166.0" text="V=N*log2(n)" />
-                <TableView fx:id="operatorsTable" layoutX="14.0" layoutY="253.0" prefHeight="196.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                <TextField fx:id="dictionary_field" editable="false" layoutX="360.0" layoutY="100.0" prefHeight="25.0" prefWidth="170.0" />
+                <TextField fx:id="length_field" editable="false" layoutX="360.0" layoutY="180.0" prefHeight="25.0" prefWidth="170.0" />
+                <TextField fx:id="volume_field" editable="false" layoutX="360.0" layoutY="260.0" prefHeight="25.0" prefWidth="170.0" />
+                <TableView fx:id="operatorsTable" layoutY="259.0" prefHeight="230.0" prefWidth="330.0" AnchorPane.bottomAnchor="41.66666666666663" AnchorPane.leftAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="jColumn" minWidth="80"  text="j" />
-                        <TableColumn fx:id="operatorsColumn" prefWidth="170.0" minWidth="100.0" text="Operator" />
+                        <TableColumn fx:id="jColumn" minWidth="80" text="j" />
+                        <TableColumn fx:id="operatorsColumn" minWidth="100.0" prefWidth="170.0" text="Operator" />
                         <TableColumn fx:id="j_countColumn" minWidth="80" text="F1j" />
                     </columns>
                 </TableView>
-            <Text layoutX="343.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Halstead metrics" wrappingWidth="194.38150024414062">
+            <Text layoutX="340.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Halstead metrics" textAlignment="CENTER" wrappingWidth="194.38150024414062">
                <font>
-                  <Font name="Yu Gothic Medium" size="20.0" />
+                  <Font name="Yu Gothic Medium" size="24.0" />
                </font>
             </Text>
+            <Text layoutX="165.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total operands:" wrappingWidth="122.13672065734863">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="165.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total operators:" wrappingWidth="122.13672065734863">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unique operands:" wrappingWidth="122.13672065734863">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unique operators:" wrappingWidth="122.13672065734863">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="380.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programm dictionary">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="391.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programm length">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="totalUniqueOperands" alignment="CENTER" editable="false" layoutX="110.0" layoutY="229.0" prefHeight="30.0" prefWidth="56.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="388.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programm volume">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="totalOperands" alignment="CENTER" editable="false" layoutX="264.0" layoutY="229.0" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="totalOperators" alignment="CENTER" editable="false" layoutX="264.0" layoutY="490.0" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="totalUniqueOperators" alignment="CENTER" editable="false" layoutX="110.0" layoutY="490.0" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
             </children>
         </AnchorPane>
    </left>

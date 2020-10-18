@@ -4,9 +4,8 @@ module FXModule {
     requires javafx.fxml;
     requires java.desktop;
 
-    //TODO lombok(смотри HalsteadMetrics) установи плагин если не будет видеть и включи в Settings->Compiler->Annotation Processor та мгалочка
     requires static lombok;
-    requires org.mapstruct.processor;  //без него lombok выпендривается
+    requires org.mapstruct.processor;
     requires kotlin.stdlib;
 
     exports com.dawist_o.CodeAnalyzer.FileParser;
