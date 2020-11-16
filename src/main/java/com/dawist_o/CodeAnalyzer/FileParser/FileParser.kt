@@ -1,7 +1,6 @@
 package com.dawist_o.CodeAnalyzer.FileParser
 
 import java.io.File
-import java.io.InputStream
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -19,8 +18,9 @@ class FileParser(private val file: File) {
     private var operands = HashMap<String, Int>()
 
     private var CLI = 0 // max
-    private var CLI_stack = Stack<Char>() // max
+    private var CLI_stack = Stack<String>() // max
     private var CL = 0  // total
+    private var casesCount = -1
 
     //TODO найди максимальный уровень вложенности условного оператора (CLI)
 
@@ -28,16 +28,33 @@ class FileParser(private val file: File) {
         val clear_line = line.trim()
         if (clear_line.startsWith("if") ||
                 clear_line.startsWith("for") ||
-                clear_line.startsWith("while")   // ||  line.startsWith("switch")
-                && clear_line.endsWith("{")) {
-            CL++;
-            CLI_stack.push('{')
-        } else if (clear_line.endsWith("}")) {
-            if (CLI < CLI_stack.size) {
-                CLI = CLI_stack.size
+                clear_line.startsWith("while")    ||  clear_line.startsWith("switch")
+                && clear_line.endsWith("{") || clear_line.contains("case")) {
+            if(!clear_line.contains("case") && !clear_line.contains("switch")) {
+                println("Increment CL for line:$clear_line")
+                CL++
             }
-            if (!CLI_stack.empty())
-                CLI_stack.pop()
+            CLI_stack.push(clear_line)
+
+            if(CLI_stack.size > CLI) {
+                CLI = CLI_stack.sumBy {
+                    if(it.contains("switch")) 0 else 1
+                }
+            }
+
+        } else if (clear_line.endsWith("}")) {
+            if (!CLI_stack.empty()) {
+                val popedLine = CLI_stack.pop()
+                if(popedLine.contains("switch")) {
+                    println("Increment CL by $casesCount cases count")
+                    CL += casesCount
+                    casesCount = -1
+                }
+
+                if(popedLine.contains("case")) {
+                    casesCount++
+                }
+            }
         }
     }
 
@@ -200,9 +217,40 @@ class FileParser(private val file: File) {
     }
 
     private fun readLinesFromFile(): List<String> {
-        val inputStream: InputStream = file.inputStream()
-        val inputString = inputStream.bufferedReader().use { it.readText() }
-        return inputString.lines()
+        val text = """
+            for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                for(int k = 0; k < n; k++) {
+                    while(count > 0) {
+                        if(cells[i][j][k] == HIDDEN) {
+                            int result = openCell(cells[i][j][k]);
+                            switch(result) {
+                                case HIDDEN: {
+                                    break;
+                                }
+                                case OPENED: {
+                                    alert("Opened");
+                                    count--;
+                                    break;
+                                }
+                                case TIMEOUT: {
+                                    alert("Timeout");
+                                    break;
+                                }
+                                default: {
+                                    alert("Error");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        """.trimIndent()
+//        val inputStream: InputStream = file.inputStream()
+//        val inputString = inputStream.bufferedReader().use { it.readText() }
+//        return inputString.lines()
+        return text.lines()
     }
 
     private fun String.containsOperand(operand: String): Boolean {
