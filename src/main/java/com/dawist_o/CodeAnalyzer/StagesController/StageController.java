@@ -50,12 +50,13 @@ public class StageController {
     }
 
     public static void openJilbMetrics(File fileForParse) {
-        JilbController model = setStage(JilbController.class,
+        JilbController controller = setStage(JilbController.class,
                 "/com.dawist_o.CodeAnalyzer.mainScreen/jilb_screen.fxml",
                 "Jilb metrics").getController();
+
         FileParser fileParser = new FileParser(fileForParse);
         FileParser.ParseResult result = fileParser.parseFile();
-
+        controller.initData(result);
     }
 
     public static void openSpenAndChepinMetrics(File fileForParse) {

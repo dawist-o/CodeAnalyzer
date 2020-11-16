@@ -80,15 +80,15 @@ public class HalsteadController {
 
         //Program dictionary
         String dictionary_string = String.format("n = %d + %d = %d",
-                result.getTotalUniqueOperands(), result.getTotalUniqueOperators(), result.getProgramDictionary());
+                result.getTotalUniqueOperands(), result.getTotalUniqueOperators(), result.getProgrammDictionnary());
         dictionary_field.setText(dictionary_string);
         //Program length
         String length_string = String.format("N = %d + %d = %d",
-                result.getTotalOperands(), result.getTotalOperators(), result.getProgramLength());
+                result.getTotalOperands(), result.getTotalOperators(), result.getProgrammLength());
         length_field.setText(length_string);
         //Program volume
         String volume_string = String.format("V = %d*log2(%d) = %d",
-                result.getProgramLength(), result.getProgramDictionary(), result.getVolume());
+                result.getProgrammLength(), result.getProgrammDictionnary(), result.getVolume());
         volume_field.setText(volume_string);
     }
 
