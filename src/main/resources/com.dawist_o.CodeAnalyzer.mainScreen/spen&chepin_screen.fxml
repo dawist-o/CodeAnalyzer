@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.SpenAndChepinsMetrics.controller.SpenAndChepinController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dawist_o.CodeAnalyzer.SpenAndChepinsMetrics.controller.SpenAndChepinController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -21,7 +21,7 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" onAction="#onBackButtonPressed" text="Back">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
@@ -35,39 +35,41 @@
       </MenuBar>
    </top>
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="100.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="472.0" prefWidth="600.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <AnchorPane prefHeight="600.0" prefWidth="600.0">
+            <AnchorPane prefHeight="600.0" prefWidth="754.0">
                <children>
-                  <TableView layoutX="200.0" layoutY="73.0" prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="spenTable" layoutX="256.0" layoutY="65.0" prefHeight="200.0" prefWidth="235.0">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="Identifier" />
-                      <TableColumn prefWidth="100.0" text="Count" />
+                      <TableColumn fx:id="identifietColumn" prefWidth="114.00001525878906" text="Identifier" />
+                      <TableColumn fx:id="countColumn" prefWidth="120.66668701171875" text="Count" />
                     </columns>
                   </TableView>
-                  <TextField alignment="CENTER" layoutX="177.0" layoutY="20.0" prefHeight="32.0" prefWidth="245.0" text="Spen metrics" />
-                  <TableView layoutX="30.0" layoutY="346.0" prefHeight="200.0" prefWidth="540.0">
-                     <columns>
-                        <TableColumn minWidth="170.0" prefWidth="180.0" />
-                        <TableColumn prefWidth="180.0" text="Full metric">
-                           <columns>
-                              <TableColumn minWidth="40.0" prefWidth="45.0" text="P" />
-                              <TableColumn minWidth="40.0" prefWidth="45.0" text="M" />
-                              <TableColumn prefWidth="45.0" text="C" />
-                              <TableColumn prefWidth="45.0" text="T" />
-                           </columns>
-                        </TableColumn>
-                        <TableColumn maxWidth="170.0" minWidth="170.0" prefWidth="180.0" text="Input/Output metric">
-                           <columns>
-                              <TableColumn minWidth="40.0" prefWidth="45.0" text="P" />
-                              <TableColumn minWidth="40.0" prefWidth="45.0" text="M" />
-                              <TableColumn prefWidth="45.0" text="C" />
-                              <TableColumn prefWidth="45.0" text="T" />
-                           </columns>
-                        </TableColumn>
-                     </columns>
-                  </TableView>
-                  <TextField alignment="CENTER" layoutX="177.0" layoutY="299.0" prefHeight="32.0" prefWidth="245.0" text="Chepin metrics" />
+                  <TextField alignment="CENTER" editable="false" layoutX="257.0" layoutY="17.0" prefHeight="32.0" prefWidth="245.0" text="Spen metrics" />
+                  <TextField alignment="CENTER" editable="false" layoutX="293.0" layoutY="267.0" prefHeight="32.0" prefWidth="71.0" text="Total" />
+                  <TextField fx:id="totalCount" alignment="CENTER" editable="false" layoutX="406.0" layoutY="267.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="315.0" prefHeight="32.0" prefWidth="327.0" text="Chepin metrics" />
+                  <TextField alignment="CENTER" editable="false" layoutX="406.0" layoutY="315.0" prefHeight="32.0" prefWidth="317.0" text="Write/read Chepin metrics" />
+                  <TextField alignment="CENTER" editable="false" layoutX="34.0" layoutY="523.0" prefHeight="32.0" prefWidth="71.0" text="Result" />
+                  <TextField alignment="CENTER" editable="false" layoutX="410.0" layoutY="523.0" prefHeight="32.0" prefWidth="71.0" text="Result" />
+                  <TextField fx:id="chepinResult" editable="false" layoutX="120.0" layoutY="523.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="wrChepinResult" editable="false" layoutX="503.0" layoutY="523.0" prefHeight="32.0" prefWidth="222.0" />
+                  <TextField fx:id="pField" alignment="CENTER" editable="false" layoutX="34.0" layoutY="357.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="mField" alignment="CENTER" editable="false" layoutX="34.0" layoutY="398.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="sField" alignment="CENTER" editable="false" layoutX="34.0" layoutY="443.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="tField" alignment="CENTER" editable="false" layoutX="34.0" layoutY="481.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="tResult" editable="false" layoutX="120.0" layoutY="481.0" prefHeight="32.0" prefWidth="246.0" />
+                  <TextField fx:id="sResult" editable="false" layoutX="120.0" layoutY="443.0" prefHeight="32.0" prefWidth="249.0" />
+                  <TextField fx:id="mResult" editable="false" layoutX="120.0" layoutY="398.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="pResult" editable="false" layoutX="120.0" layoutY="357.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="pWRField" alignment="CENTER" editable="false" layoutX="410.0" layoutY="357.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="mWRField" alignment="CENTER" editable="false" layoutX="409.0" layoutY="398.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="sWRField" alignment="CENTER" editable="false" layoutX="410.0" layoutY="441.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="tWRField" alignment="CENTER" editable="false" layoutX="410.0" layoutY="481.0" prefHeight="32.0" prefWidth="71.0" />
+                  <TextField fx:id="tWRResult" editable="false" layoutX="505.0" layoutY="481.0" prefHeight="32.0" prefWidth="219.0" />
+                  <TextField fx:id="sWRResult" editable="false" layoutX="505.0" layoutY="441.0" prefHeight="32.0" prefWidth="215.0" />
+                  <TextField fx:id="mWRResult" editable="false" layoutX="504.0" layoutY="399.0" prefHeight="32.0" prefWidth="215.0" />
+                  <TextField fx:id="pWRResult" editable="false" layoutX="502.0" layoutY="356.0" prefHeight="32.0" prefWidth="223.0" />
                </children>
             </AnchorPane>
          </content>

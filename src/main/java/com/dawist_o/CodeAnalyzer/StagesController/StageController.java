@@ -1,6 +1,7 @@
 package com.dawist_o.CodeAnalyzer.StagesController;
 
 import com.dawist_o.CodeAnalyzer.FileParser.FileParser;
+import com.dawist_o.CodeAnalyzer.FileParser.FileParserForChepin;
 import com.dawist_o.CodeAnalyzer.HalsteadMetrics.controller.HalsteadController;
 import com.dawist_o.CodeAnalyzer.JilbMetrics.controller.JilbController;
 import com.dawist_o.CodeAnalyzer.MainScreen.controller.MainController;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import kotlin.Pair;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,12 +62,12 @@ public class StageController {
     }
 
     public static void openSpenAndChepinMetrics(File fileForParse) {
-        SpenAndChepinController model = setStage(SpenAndChepinController.class,
+        SpenAndChepinController controller = setStage(SpenAndChepinController.class,
                 "/com.dawist_o.CodeAnalyzer.mainScreen/spen&chepin_screen.fxml",
                 "Spen and Chepin metrics").getController();
-        FileParser fileParser = new FileParser(fileForParse);
-        FileParser.ParseResult result = fileParser.parseFile();
-
+        FileParserForChepin fileParser = new FileParserForChepin(fileForParse);
+        Pair<FileParserForChepin.ChapinResult, FileParserForChepin.ChapinResult> result = fileParser.parseFile();
+        controller.initData(result);
     }
 
 
