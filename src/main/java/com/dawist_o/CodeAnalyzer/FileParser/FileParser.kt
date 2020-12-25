@@ -1,6 +1,7 @@
 package com.dawist_o.CodeAnalyzer.FileParser
 
 import java.io.File
+import java.io.InputStream
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -217,40 +218,9 @@ class FileParser(private val file: File) {
     }
 
     private fun readLinesFromFile(): List<String> {
-        val text = """
-            for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                for(int k = 0; k < n; k++) {
-                    while(count > 0) {
-                        if(cells[i][j][k] == HIDDEN) {
-                            int result = openCell(cells[i][j][k]);
-                            switch(result) {
-                                case HIDDEN: {
-                                    break;
-                                }
-                                case OPENED: {
-                                    alert("Opened");
-                                    count--;
-                                    break;
-                                }
-                                case TIMEOUT: {
-                                    alert("Timeout");
-                                    break;
-                                }
-                                default: {
-                                    alert("Error");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        """.trimIndent()
-//        val inputStream: InputStream = file.inputStream()
-//        val inputString = inputStream.bufferedReader().use { it.readText() }
-//        return inputString.lines()
-        return text.lines()
+        val inputStream: InputStream = file.inputStream()
+        val inputString = inputStream.bufferedReader().use { it.readText() }
+        return inputString.lines()
     }
 
     private fun String.containsOperand(operand: String): Boolean {
@@ -304,5 +274,8 @@ class FileParser(private val file: File) {
 
         val cl: Double // CL/operators count
             get() = ( CL.toDouble() /  operators.values.sum())
+
+        val spen:Int
+            get() = totalOperands - operands.size
     }
 }
